@@ -1,0 +1,12 @@
+{
+  "name": "leadflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lead capture dashboard with a dependency-free Node.js REST API",
+  "type": "module",
+  "scripts": {
+    "start": "node server/app.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}
