@@ -21,6 +21,16 @@ npm start
 # GET http://localhost:3000/health
 ```
 
+Проверка полного сценария:
+
+```bash
+curl -X POST http://localhost:3000/api/leads \
+  -H "content-type: application/json" \
+  -d '{"name":"Anna","request":"CRM setup","email":"anna@example.com"}'
+
+curl http://localhost:3000/api/leads
+```
+
 Тесты:
 
 ```bash
