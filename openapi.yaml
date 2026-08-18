@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: LeadFlow API
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      summary: Check service readiness
+      responses:
+        '200': { description: Service is ready }
+  /api/leads:
+    get:
+      summary: List leads and pipeline summary
+      responses:
+        '200': { description: Lead collection }
+    post:
+      summary: Create a validated lead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NewLead' }
+      responses:
+        '201': { description: Lead created }
+        '422': { description: Validation failed }
+  /api/leads/{id}/status:
+    patch:
+      summary: Change pipeline status
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status: { type: string, enum: [new, work, done] }
+      responses:
+        '200': { description: Status changed }
+        '404': { description: Lead not found }
+components:
+  schemas:
+    NewLead:
+      type: object
+      required: [name, request]
+      properties:
+        name: { type: string, minLength: 1 }
+        request: { type: string, minLength: 1 }
+        email: { type: string, format: email }
+        source: { type: string, default: Website }

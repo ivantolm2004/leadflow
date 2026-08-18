@@ -35,8 +35,15 @@ npm test
 - JSON-хранилище с атомарной записью;
 - ограничение размера request body и корректные HTTP-коды;
 - unit-тесты на Node Test Runner и CI в GitHub Actions.
+- интеграционные тесты реальных HTTP-запросов;
+- OpenAPI 3.1 контракт и Docker-образ без root-пользователя.
 
 Подробности: [ARCHITECTURE.md](ARCHITECTURE.md).
+
+```bash
+docker build -t leadflow .
+docker run --rm -p 3000:3000 leadflow
+```
 
 ## Следующий production-шаг
 
