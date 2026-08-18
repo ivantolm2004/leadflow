@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="LeadFlow — демонстрация автоматизации обработки заявок для малого бизнеса">
+  <title>LeadFlow — заявки без потерь</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">Lead<span>Flow</span></a>
+    <nav><a href="#dashboard">Дашборд</a><a href="#how">Как работает</a></nav>
+    <button class="ghost" id="demoButton">Добавить демо-заявку</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Автоматизация продаж</p>
+        <h1>Каждая заявка<br><em>доходит до менеджера</em></h1>
+        <p class="lead">LeadFlow собирает обращения с сайта, расставляет приоритеты и показывает команде, что делать дальше.</p>
+        <a class="primary" href="#dashboard">Открыть демо <span>→</span></a>
+      </div>
+      <div class="flow-card" aria-label="Схема обработки заявки">
+        <div class="flow-step"><b>01</b><span>Форма на сайте<small>Новая заявка</small></span><i class="pulse"></i></div>
+        <div class="connector"></div>
+        <div class="flow-step"><b>02</b><span>LeadFlow<small>Проверка и приоритет</small></span><i>⚡</i></div>
+        <div class="connector"></div>
+        <div class="flow-step"><b>03</b><span>Менеджер<small>Уведомление отправлено</small></span><i>✓</i></div>
+      </div>
+    </section>
+
+    <section class="dashboard" id="dashboard">
+      <div class="section-head"><div><p class="eyebrow">Панель оператора</p><h2>Заявки сегодня</h2></div><span class="live"><i></i> Обновляется автоматически</span></div>
+      <div class="stats">
+        <article><small>Всего заявок</small><strong id="totalCount">24</strong><span class="up">↑ 18% за неделю</span></article>
+        <article><small>Новые</small><strong id="newCount">7</strong><span>Нужен ответ</span></article>
+        <article><small>Конверсия</small><strong>32%</strong><span class="up">↑ 4,2%</span></article>
+        <article><small>Среднее время ответа</small><strong>8 мин</strong><span class="up">На 12 мин быстрее</span></article>
+      </div>
+      <div class="table-card">
+        <div class="filters"><button class="active" data-filter="all">Все</button><button data-filter="new">Новые</button><button data-filter="work">В работе</button><button data-filter="done">Закрытые</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Клиент</th><th>Запрос</th><th>Источник</th><th>Статус</th><th>Создана</th></tr></thead><tbody id="leadsTable"></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <p class="eyebrow">Бизнес-эффект</p><h2>Один простой процесс.<br>Ноль потерянных обращений.</h2>
+      <div class="benefits"><article><b>01</b><h3>Собирает</h3><p>Объединяет заявки из форм, рекламы и мессенджеров.</p></article><article><b>02</b><h3>Приоритизирует</h3><p>Выделяет горячие обращения по заданным правилам.</p></article><article><b>03</b><h3>Уведомляет</h3><p>Сразу передаёт менеджеру контекст и контакты клиента.</p></article></div>
+    </section>
+  </main>
+  <div class="toast" id="toast">Новая заявка добавлена</div>
+  <script src="app.js"></script>
+</body>
+</html>
