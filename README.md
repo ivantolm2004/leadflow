@@ -21,20 +21,20 @@ npm start
 # GET http://localhost:3000/health
 ```
 
-Проверка полного сценария:
+Воспроизводимый бизнес-сценарий:
 
 ```bash
-curl -X POST http://localhost:3000/api/leads \
-  -H "content-type: application/json" \
-  -d '{"name":"Anna","request":"CRM setup","email":"anna@example.com"}'
-
-curl http://localhost:3000/api/leads
+npm run scenario
 ```
+
+Команда поднимает API на свободном локальном порту, отправляет заявки с сайта и из Telegram, отклоняет невалидный email, проводит одну заявку до статуса `done`, перезапускает сервер и проверяет сохранённую воронку. Ожидаемый итог: `2` заявки — одна `new`, одна `done`. Подробные шаги и критерии: [docs/business-scenario.md](docs/business-scenario.md).
 
 Тесты:
 
 ```bash
 npm test
+# тесты + бизнес-сценарий, как в CI
+npm run verify
 ```
 
 ## Реализовано
@@ -44,8 +44,9 @@ npm test
 - `PATCH /api/leads/:id/status` с контролем переходов;
 - JSON-хранилище с атомарной записью;
 - ограничение размера request body и корректные HTTP-коды;
-- unit-тесты на Node Test Runner и CI в GitHub Actions.
+- unit-тесты на Node Test Runner и CI в GitHub Actions;
 - интеграционные тесты реальных HTTP-запросов;
+- исполняемый end-to-end сценарий с проверкой файловой персистентности;
 - OpenAPI 3.1 контракт и Docker-образ без root-пользователя.
 
 Подробности: [ARCHITECTURE.md](ARCHITECTURE.md).

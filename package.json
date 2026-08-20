@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "node server/app.js",
-    "test": "node --test"
+    "test": "node --test",
+    "scenario": "node scripts/verify-business-flow.mjs",
+    "verify": "npm test && npm run scenario"
   },
   "engines": { "node": ">=20" }
 }
+
